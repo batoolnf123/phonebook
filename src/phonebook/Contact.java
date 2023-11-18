@@ -9,42 +9,32 @@ import java.util.Date;
  * @author batoolalfouzan
  */
 public class Contact implements Comparable<Contact> {
-    String name;
-    String phonenumber;
-    String emailaddress;
-    String address;
-    Date birthday; 
-    String notes;
-    LinkedList<Event> events ; 
-   
-    public Contact() {
-        this.name = "";
-        this.phonenumber = "";
-        this.emailaddress = "";
-        this.address = "";
-        this.birthday = null;
-        this.notes = "";
-        events = new LinkedList<Event>();
+        public String contactsName;
+    public String phoneNumber;
+    public String emailAddress;
+    public String Address;
+    public String birthday;
+    public String notes;
+
+    public Contact() {//joury
+        contactsName = "";
+        phoneNumber = "";
+        emailAddress = "";
+        Address = "";
+        birthday = "";
+        notes = "";
     }
 
-    public Contact(String name, String phonenumber, String emailaddress, String address, String birthday, String notes) {
-        this.name = name;
-        this.phonenumber = phonenumber;
-        this.emailaddress = emailaddress;
-        this.address = address;
-        this.birthday = new Date(birthday);
+    public Contact(String contactsName, String phoneNumber, String emailAddress, String Address, String birthday, String notes) {//joury
+        this.contactsName = contactsName;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
+        this.Address = Address;
+        this.birthday = birthday;
         this.notes = notes;
-        events = new LinkedList<Event>();
-    }
-
-    @Override
-    public String toString() {
-        return "\nName: " + name +
-                    "\nPhone Number: " + phonenumber +
-                    "\nEmail Address: " + emailaddress +
-                    "\nAddress: " +  address +
-                    "\nBirthday: " + birthday +
-                    "\nNotes: " + notes + 
-                    "\nEvents : " + events.toString();
 
     }
+    
+     
+}
+
