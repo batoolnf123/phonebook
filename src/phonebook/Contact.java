@@ -35,6 +35,12 @@ public class Contact implements Comparable<Contact> {
 
     }
     
+    public String toString() {
+        return "Contact{" + "contactsName is" + contactsName + ", phoneNumber is" + phoneNumber + ", email Address is" + emailAddress + ", Address is" + Address + ", birthday is" + birthday + ", notes is" + notes + '}';
+    }
+     
+}
+
      
 }
 
