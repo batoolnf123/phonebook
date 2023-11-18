@@ -11,19 +11,19 @@ package phonebook;
 public class BT {
    BSTNode<T> root, current;
 /** Creates a new instance of BST */
-public BT() {//jjoury
+public BT() {
 root = current = null;
 }
-public boolean empty() {//joury
+public boolean empty() {
 return root == null;
 }
-public boolean full() {//joury
+public boolean full() {
 return false;
 }
-public T retrieve () {//joury
+public T retrieve () {
 return current.data;
 }
-public boolean findkey(int tkey) {//joury
+public boolean findkey(int tkey) {
 BSTNode<T> p = root,q = root;
 if(empty())
 return false;
@@ -41,7 +41,7 @@ p = p.right;
 current = q;
 return false;
 }
-public boolean insert(int k, T val) {//joury
+public boolean insert(int k, T val) {
 BSTNode<T> p, q = current;
 if(findkey(k)) {
 current = q; // findkey() modified current
@@ -62,7 +62,7 @@ current = p;
 return true;
 }
 }
-public boolean removeKey(int k) {//joury
+public boolean removeKey(int k) {
 int k1 = k;
 BSTNode<T> p = root;
 BSTNode<T> q = null; // Parent of p
@@ -131,4 +131,4 @@ return p;
 }*/
 }
  
-}
+}//joury
