@@ -9,7 +9,7 @@ package phonebook;
  * @author batoolalfouzan
  */
 public class BT {
-   BSTNode<T> root, current;//joury
+   BSTNode<T> root, current;
 /** Creates a new instance of BST */
 public BT() {//jjoury
 root = current = null;
