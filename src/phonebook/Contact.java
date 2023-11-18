@@ -9,7 +9,8 @@ import java.util.Date;
  * @author batoolalfouzan
  */
 public class Contact implements Comparable<Contact> {
-        public String contactsName;
+//joury
+    public String contactsName;
     public String phoneNumber;
     public String emailAddress;
     public String Address;
@@ -35,7 +36,7 @@ public class Contact implements Comparable<Contact> {
 
     }
     
-    public String toString() {
+    public String toString() {//joury
         return "Contact{" + "contactsName is" + contactsName + ", phoneNumber is" + phoneNumber + ", email Address is" + emailAddress + ", Address is" + Address + ", birthday is" + birthday + ", notes is" + notes + '}';
     }
      
