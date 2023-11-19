@@ -40,7 +40,13 @@ public class Contact implements Comparable<Contact> {
         return "Contact{" + "contactsName is" + contactsName + ", phoneNumber is" + phoneNumber + ", email Address is" + emailAddress + ", Address is" + Address + ", birthday is" + birthday + ", notes is" + notes + '}';
     }
      
-}
+
+
+public int compareTo(Contact o) { //are we going to make comp. interface? 
+
+            return (this.name.compareToIgnoreCase(o.name));
+        
+    }
 
      
 }
