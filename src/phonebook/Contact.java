@@ -48,6 +48,17 @@ public int compareTo(Contact o) { //are we going to make comp. interface?
         
     }
 
+    public int CompareTo2(Contact o) 
+    {
+        if (this.name.compareTo(o.name) == 0) {
+            return 0;
+        } else if (this.name.compareTo(o.name)) > 0) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
      
 }
 
