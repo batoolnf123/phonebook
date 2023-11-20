@@ -8,7 +8,7 @@ package phonebook;
  *
  * @author batoolalfouzan
  */
-public class BT {
+public class BT { 
    BSTNode<T> root, current;
 /** Creates a new instance of BST */
 public BT() {
@@ -131,4 +131,4 @@ return p;
 }*/
 }
  
-}//joury
+}// the whole class done by joury
