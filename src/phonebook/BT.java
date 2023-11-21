@@ -1,29 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package phonebook;
 
-/**
- *
- * @author batoolalfouzan
- */
+
 public class BT { 
    BSTNode<T> root, current;
 /** Creates a new instance of BST */
-public BT() {
+public BT() {//joury
 root = current = null;
 }
-public boolean empty() {
+public boolean empty() {//joury
 return root == null;
 }
-public boolean full() {
+public boolean full() {//joury
 return false;
 }
-public T retrieve () {
+public T retrieve () {//joury
 return current.data;
 }
-public boolean findkey(int tkey) {
+public boolean findkey(int tkey) {//joury
 BSTNode<T> p = root,q = root;
 if(empty())
 return false;
@@ -41,7 +35,7 @@ p = p.right;
 current = q;
 return false;
 }
-public boolean insert(int k, T val) {
+public boolean insert(int k, T val) {//joury
 BSTNode<T> p, q = current;
 if(findkey(k)) {
 current = q; // findkey() modified current
@@ -62,7 +56,7 @@ current = p;
 return true;
 }
 }
-public boolean removeKey(int k) {
+public boolean removeKey(int k) {//joury
 int k1 = k;
 BSTNode<T> p = root;
 BSTNode<T> q = null; // Parent of p
@@ -131,4 +125,4 @@ return p;
 }*/
 }
  
-}// the whole class done by joury
+
