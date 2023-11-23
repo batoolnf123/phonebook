@@ -1,4 +1,5 @@
 
+
 public class BST<T> {
 
     BSTNode<T> root, current;
@@ -25,28 +26,10 @@ public class BST<T> {
     public void clear() {//joury
         current = root = null;
     }
-
-     public boolean findkey(String tkey) {//anoud
-        BSTNode<T> p = root, q = root;
-        if (empty()) {
-            return false;
-        }
-
-        while (p != null) {
-            q = p;
-            if (tkey.compareToIgnoreCase(p.key) == 0) {
-                current = p;
-                return true;
-            } else if (tkey.compareToIgnoreCase(p.key) < 0) {
-                p = p.left;
-            } else {
-                p = p.right;
-            }
-        }
-        current = q;
-        return false;
-    }
     
+    
+
+  
       public boolean insert(String k, T val) {//anoud
         BSTNode<T> p = current;
         BSTNode<T> newNode = new BSTNode<T>(k, val);
@@ -70,6 +53,25 @@ public class BST<T> {
         return true;
 
     }
+      
+       public boolean findkey(String tkey) {//anoud
+        BSTNode<T> p = root;
+
+        while (p != null) {
+            current = p;
+            if (tkey.compareToIgnoreCase(p.key) == 0) {
+                return true;
+
+            } else if (tkey.compareToIgnoreCase(p.key) < 0) {
+                p = p.left;
+            } else {
+                p = p.right;
+            }
+        }
+
+        return false;
+    }
+       
 
     public boolean remove(String key) {//joury
         BSTNode<T> pointer = root;
@@ -121,8 +123,89 @@ public class BST<T> {
 
         return false;
     }
-
-  
+    
+    
+    
    
+    
+     public void inOrder() {
+        if (root == null) {
+            System.out.println("Empty tree");
+        } else {
+            inOrder((BSTNode<Contact>) root);
+        }
 
+    }
 
+    private void inOrder(BSTNode<Contact> p) {
+        if (p == null) {
+            return;
+        }
+        inOrder(p.left);
+        System.out.println("key=" + p.key);
+        System.out.println(p.data.toString());
+        inOrder(p.right);
+    }
+
+    public void preOrder() {
+        if (root == null) {
+            System.out.println("Empty tree");
+        } else {
+            preOrder((BSTNode<Contact>) root);
+        }
+    }
+
+    private void preOrder() {
+      
+        if (p == null) {
+            return;
+        }
+        System.out.println("key=" + p.key);
+        System.out.println(p.data.toString());
+        preOrder(p.left);
+        preOrder(p.right);
+    }
+    
+
+    public boolean checkPhoneExist(String phone) {
+        if (root == null) {
+            return false;
+        } else {
+            return CheckPhoneInorder((BSTNode<Contact>) root, phone);
+        }
+    }
+
+    private boolean CheckPhoneInorder(BSTNode<Contact> p, String phone) {
+        if (p == null) {
+            return false;
+        }
+        boolean ExistInLeft = CheckPhoneInorder(p.left, phone)
+        :
+      if (ExistInLeft) {
+            return true;
+        }
+        if (p.data.getPhoneNumber().equals(phone)) {
+            return true;
+        }
+        return CheckPhoneInorder(p.right, phone);
+    }
+
+    public linkedlist<Contact> SearchByFirstName(String n) {
+        linkedlist<Contact> res = new linkedlist<Contact>();
+        
+      if (root == null) {
+            return res;
+        }
+        RecSearchByFirstName(root, res, n);
+        return res;
+    }
+
+    private void RecSearchByFirstName(BSTNode<T> p, linkedlist<Contact> res, String n) {
+        if (p == null) {
+            return;
+        }
+        RecSearchByFirstName(p.left, res, n);
+        //String 
+    }
+
+}
