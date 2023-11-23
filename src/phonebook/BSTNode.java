@@ -11,13 +11,13 @@ public class BSTNode<T> {
     public T data;
     public BSTNode<T> left, right;
 
-    public BSTNode(String k, T val) {
+    public BSTNode(String k, T val) {//joury
         key = k;
         data = val;
         left = right = null;
     }
 
-    public BSTNode(String k, T val, BSTNode<T> l, BSTNode<T> r) {
+    public BSTNode(String k, T val, BSTNode<T> l, BSTNode<T> r) {//joury
         key = k;
         data = val;
         left = l;
