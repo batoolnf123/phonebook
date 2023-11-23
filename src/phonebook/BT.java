@@ -27,47 +27,47 @@ public class BST<T> {
     }
 
     public boolean remove(String key) {//joury
-        BSTNode<T> p = root;
+        BSTNode<T> pointer = root;
         BSTNode<T> q = null;
         String SearchKey = key;
         //case 1 if the tree is empty
-        if (p == null) {
+        if (pointer == null) {
             return false;
         }
         //case 2 if the key is the root
-        if (SearchKey.compareTo(p.key) < 0) {
-            q = p;
-            p = p.left;
+        if (SearchKey.compareTo(pointer.key) < 0) {
+            q = pointer;
+            pointer = pointer.left;
 
-        } else if (SearchKey.compareTo(p.key) > 0) {
-            q = p;
-            p = p.right;
+        } else if (SearchKey.compareTo(pointer.key) > 0) {
+            q = pointer;
+            pointer = pointer.right;
         } else {
-            if (p.right != null && p.left != null) {
-                BSTNode<T> j = p.right;
-                q = p;
+            if (pointer.right != null && pointer.left != null) {
+                BSTNode<T> j = pointer.right;
+                q = pointer;
                 while (j.left != null) {
                     q = j;
                     j = j.left;
                 }
-                p.key = j.key;
-                p.data = j.data;
+                pointer.key = j.key;
+                pointer.data = j.data;
                 SearchKey = j.key;
-                p = j;
+                pointer = j;
             }
-            if (p.left != null) {
-                p = p.left;
+            if (pointer.left != null) {
+                pointer = pointer.left;
 
             } else {
-                p = p.right;
+                pointer = pointer.right;
             }
             if (q == null) {
-                root = p;
+                root = pointer;
             } else {
                 if (SearchKey.compareTo(q.key) < 0) {
-                    q.left = p;
+                    q.left = pointer;
                 } else {
-                    q.right = p;
+                    q.right = pointer;
                 }
             }
             current = root;
