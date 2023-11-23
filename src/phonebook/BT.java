@@ -26,6 +26,51 @@ public class BST<T> {
         current = root = null;
     }
 
+     public boolean findkey(String tkey) {//anoud
+        BSTNode<T> p = root, q = root;
+        if (empty()) {
+            return false;
+        }
+
+        while (p != null) {
+            q = p;
+            if (tkey.compareToIgnoreCase(p.key) == 0) {
+                current = p;
+                return true;
+            } else if (tkey.compareToIgnoreCase(p.key) < 0) {
+                p = p.left;
+            } else {
+                p = p.right;
+            }
+        }
+        current = q;
+        return false;
+    }
+    
+      public boolean insert(String k, T val) {//anoud
+        BSTNode<T> p = current;
+        BSTNode<T> newNode = new BSTNode<T>(k, val);
+
+        if (empty()) {
+            current = root = newNode;
+        }
+
+        if (findkey(k)) {
+            current = p; // find key modified current so return it
+            return false; // key already in the BST cant insert
+        }
+
+        if (k.compareToIgnoreCase(current.key) < 0) {
+            current.left = newNode;
+
+        } else {
+            current.right = newNode;
+        }
+        current = newNode;
+        return true;
+
+    }
+
     public boolean remove(String key) {//joury
         BSTNode<T> pointer = root;
         BSTNode<T> q = null;
@@ -77,47 +122,7 @@ public class BST<T> {
         return false;
     }
 
-    public boolean findkey(String key) {//joury
-        BSTNode<T> p = root;
-        if (root == null) {
-            return false;
-        }
-        while (p != null) {
-            current = p;
-            if (key.compareTo(p.key) == 0) {
-                return true;
-            } else if (key.compareTo(p.key) < 0) {
-                p = p.left;
-            } else {
-                p = p.right;
-            }
-        }
-        return false;
-    }
-
-    public boolean insert(String k, T val) {//joury
-        if (root == null) {
-            current = root = new BSTNode<T>(k, val);
-            return true;
-        }
-
-        BSTNode<T> p = current;
-        if (findkey(k)) {
-            current = p;
-            return false;
-        }
-
-        BSTNode<T> newv = new BSTNode<T>(k, val);
-        if (k.compareTo(current.key) < 0) {
-            current.left = newv;
-
-        } else {
-            current.right = newv;
-
-        }
-        current = newv;
-        return true;
-    }
-
+  
+   
 
 
