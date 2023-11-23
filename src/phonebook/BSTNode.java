@@ -12,12 +12,12 @@ public class BSTNode {
 public T data;
 public BSTNode<T> left, right;
 /** Creates a new instance of BSTNode */
-public BSTNode(int k, T val) {
+public BSTNode(int k, T val) {//joury
 key = k;
 data = val;
 left = right = null;
 }
-public BSTNode(int k, T val, BSTNode<T> l, BSTNode<T> r) {
+public BSTNode(int k, T val, BSTNode<T> l, BSTNode<T> r) {//joury
 key = k;
 data = val;
 left = l;
