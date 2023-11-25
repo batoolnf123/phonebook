@@ -3,14 +3,13 @@ package phonebook;
 
 
 public class Phonebook {
- static BST<Contact> AllContacts;
-    static BST<Event> AllEvent; //why not linkedlist?
+    static BST<Contact> AllContacts;
+    static linkedlist<Event> AllEvent;
 
     public PhoneBook() {//joury
         AllContacts = new BST<Contact>();
-        AllEvent = new BST<Event>();
+        AllEvent = new linkedlist<Event>();
     }
-
     public void addContact(Contact newContact) {//joury
         boolean add = false;
         if (AllContacts.checkPhoneExist(newContact.phoneNumber)) {//check by phone number
