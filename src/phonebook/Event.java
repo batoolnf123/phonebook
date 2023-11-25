@@ -3,34 +3,90 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package phonebook;
-import java.util.Date;
+
 /**
  *
  * @author batoolalfouzan
  */
 public class Event implements Comparable<Event> {
-    String title;
-    Date date;
-    String time;
-    String location;
-    boolean EventType;  // event true , appointment = false;
-    LinkedList <String> contacts_names;
+
+    private String title;
+    private String date;
+    private String time;
+    private String location;
+
+    linkedlist<Contact> contactsinEvent; 
+
+    Contact involvedContact;
+    String contactName;
 
     public Event() {
         this.title = "";
-        this.date = null;
+        this.date = "";
         this.time = "";
         this.location = "";
-        this.EventType = true;
-        this.contacts_names = new LinkedList<String> ();
+        this.contactName = "";
+        involvedContact = new Contact();
+        contactsinEvent = new linkedlist<Contact>();
+
     }
-    
-    public Event(String title, String date, String time, String location, boolean t, String contact) {
+
+    public Event(String title, String date, String time, String location) {
         this.title = title;
-        this.date = new Date(date);
+        this.date = date;
         this.time = time;
         this.location = location;
-        this.EventType =t;
-        this.contacts_names = new LinkedList<String> ();
-        contacts_names.insert(contact);
-    }}
+        involvedContact = new Contact();
+        contactsinEvent = new linkedlist<Contact>();
+
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    public void setInvolvedContact(Contact involvedContact) {
+        this.involvedContact = involvedContact;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    @Override
+    public int CompareTo(Event c) 
+    {
+        if (getTitle().compareTo(c.getTitle()) == 0) {
+            return 0;
+        } else if (getTitle().compareTo(c.getTitle()) > 0) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+    public void display() { 
+        System.out.println("Event title:" + title);
+        System.out.println("Contact name:" + contactName);
+        System.out.println("Event date and time (MM/DD/YYYY HH:MM):" + date + time);
+        System.out.println("Event location:" + location);
+    }
+
+}
+
