@@ -3,13 +3,14 @@ package phonebook;
 
 
 public class Phonebook {
-    static BST<Contact> AllContacts;
-    static linkedlist<Event> AllEvent;
+   public static BST<Contact> AllContacts;
+    public static linkedlist<Event> events;
 
     public PhoneBook() {//joury
         AllContacts = new BST<Contact>();
-        AllEvent = new linkedlist<Event>();
+        events = new linkedlist<Event>();
     }
+
     public void addContact(Contact newContact) {//joury
         boolean add = false;
         if (AllContacts.checkPhoneExist(newContact.phoneNumber)) {//check by phone number
@@ -43,6 +44,21 @@ public class Phonebook {
 
     }
 
+    public static void PrintAllEvents() {
+        if (!events.isEmpty()) {
+            events.findfirst();
+            while (!events.last()) {
+
+                System.out.println(events.retrieve().getTitle());
+                events.findnext();
+            }
+            System.out.println(events.retrieve().getTitle());
+
+        } else {
+            System.out.println("There are no events to print");
+        }
+    }
+
     public void printAllContactsInOrder() {//joury
         AllContacts.inOrder();
     }
@@ -54,4 +70,5 @@ public class Phonebook {
     public static void main(String[] args) {
         // TODO code application logic here
     }
+
 }
