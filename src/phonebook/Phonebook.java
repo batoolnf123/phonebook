@@ -4,7 +4,7 @@ package phonebook;
 
 public class Phonebook {
  static BST<Contact> AllContacts;
-    static BST<Event> AllEvent;
+    static BST<Event> AllEvent; //why not linkedlist?
 
     public PhoneBook() {//joury
         AllContacts = new BST<Contact>();
@@ -30,6 +30,20 @@ public class Phonebook {
 
     }
 
+    public Contact searchByName(String name) {//anoud
+
+        if (AllContacts.empty()) {
+            return null;
+        }
+
+        boolean cFound = AllContacts.findkey(name);
+        if (cFound) {
+            return AllContacts.retrieve();
+        }
+        return null;
+
+    }
+
     public void printAllContactsInOrder() {//joury
         AllContacts.inOrder();
     }
@@ -38,10 +52,7 @@ public class Phonebook {
         AllContacts.preOrder();
     }
 
-}
-
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
 }
