@@ -29,6 +29,41 @@ public class Phonebook {
         }
 
     }
+     public boolean isConflict(Event event, Contact contact) {//joury
+        linkedlist<Event> contactEvents = contact.contactEvents;
+        if (contactEvents.isEmpty()) {
+            return false;
+        }
+        contactEvents.findfirst();
+        while (!contactEvents.last()) {
+            if ((event.getDate().equals(contactEvents.retrieve().getDate())) || (event.getTime().equals(contactEvents.retrieve().getTime()))) {
+                return true;
+            }
+            contactEvents.findnext();
+
+        }
+        return false;
+    }
+
+    public void PrintEventDetails(String ContactName) {//joury
+        if (events.isEmpty()) {
+            System.out.println("There are no events with this contact name");
+            return;
+
+        }
+        events.findfirst();
+        while (!events.last()) {
+            if (events.retrieve().getContactName().equals(ContactName)) {
+                events.retrieve().display();
+            }
+            events.findnext();
+        }
+        if (events.retrieve().getContactName().equals(ContactName)) {
+            events.retrieve().display();
+        }
+        System.out.println("There are no events with this contact name");
+    }
+
 
     public Contact searchByName(String name) {//anoud
 
