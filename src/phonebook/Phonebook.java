@@ -2,14 +2,14 @@
 package phonebook;
 
 
-public class phonebook {
+public class Phonebook {
   
    public static Scanner input = new Scanner(System.in);
 
     public static BST<Contact> AllContacts;
     public static linkedlist<Event> events;
 
-    public phonebook() {//joury
+    public Phonebook() {//joury
         AllContacts = new BST<Contact>();
         events = new linkedlist<Event>();
     }
@@ -35,15 +35,41 @@ public class phonebook {
     
     
     
-    public void deleteEvent(String tit, String n){ 
+    public static void deleteEvent(String tit, String n){ 
          
          System.out.println("deleting event" + tit + " with contact"+ n);
-         //linkedlist <Contact> contactsWithCurrentEvent = getContactsInEvent(tit);
-         //contactsWithCurrentEvent.findfirst();
+         linkedlist <Contact> contactsWithCurrentEvent = getContactsInEvent(tit);
+         contactsWithCurrentEvent.findfirst();
+         while(!contactsWithCurrentEvent.isEmpty() && !contactsWithCurrentEvent.last()){
+             if(contactsWithCurrentEvent.retrieve().getContactName().equals(n))
+                 contactsWithCurrentEvent.remove();
+             break;
+         }
+         contactsWithCurrentEvent.findnext();
+         if(!contactsWithCurrentEvent.isEmpty() && contactsWithCurrentEvent.retrieve().getContactName().equals(n))
+                 contactsWithCurrentEvent.remove();
+         if(!contactsWithCurrentEvent.isEmpty())
+             return;
+         if(events.isEmpty())
+             return;
+         events.findfirst();
+         while(!events.last()){
+             if(events.retrieve().getTitle().equals(tit)){
+                 events.remove();
+                 System.out.println(tit +" event deleted");}
+             events.findnext();
+              if(events.retrieve().getTitle().equals(tit)){
+                 events.remove();
+                 System.out.println(tit +" event deleted");}
+                 else
+                 System.out.println("event can't be deleted because it doesn't exist");
+             }
+                 
+         }
 
-     }
+     
          
-     public void DeleteAllEventsWithContact(String n, linkedlist<Event>L){
+     public static void DeleteAllEventsWithContact(String n, linkedlist<Event>L){
          while(!L.isEmpty()){
              String currentEventTitle = L.retrieve().getTitle();
              deleteEvent(currentEventTitle,n);
@@ -51,7 +77,7 @@ public class phonebook {
          }
      }
      
-    /* public static void DeleteContact(String n){
+    public static void DeleteContact(String n){
     
         if (AllContacts.empty()) {
             System.out.println("Can't delete because the contact is not found ");
@@ -69,12 +95,41 @@ public class phonebook {
             }
             L=AllContacts.retrieve().contactEvents;
             DeleteAllEventsWithContact(n , L);
-            AllContacts.removekey(n);
+            boolean deleted =AllContacts.removekey(n);
+            if(deleted)
             System.out.println(n+" contact deleted");
+            else 
+             System.out.println(  "contact not deleted" );
             
-        }*/
+        }
+    public static linkedlist<Contact> getContactsInEvent(String n){
+        Event ThisEvent=searchEventByTitle(n);
+        if(ThisEvent!=null)
+            return ThisEvent.contactsinEvent;
+        return new linkedlist<Contact>();
+    }
 
-    
+    public static Event searchEventByTitle(String n) {
+        if (events.isEmpty()) {
+            return null;
+        }
+
+        events.findfirst();
+        while (!events.last()) {
+            if (events.retrieve().getTitle().equals(n)) {
+                return events.retrieve();
+            }
+
+            events.findnext();
+        }
+
+        if (events.retrieve().getTitle().equals(n)) {
+            return events.retrieve();
+        } else {
+            return null;
+        }
+
+    }
     
     
     
@@ -271,7 +326,7 @@ public class phonebook {
     public static void main(String[] args) {
 
         System.out.println("Welcome to the BST Phonebook!");
-        phonebook p = new phonebook();
+        Phonebook p = new Phonebook();
 
         int choice;
 
