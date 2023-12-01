@@ -2,14 +2,14 @@
 package phonebook;
 
 
-public class Phonebook {
+public class phonebook {
   
-    public static Scanner input = new Scanner(System.in);
+   public static Scanner input = new Scanner(System.in);
 
     public static BST<Contact> AllContacts;
     public static linkedlist<Event> events;
 
-    public PhoneBook() {//joury
+    public phonebook() {//joury
         AllContacts = new BST<Contact>();
         events = new linkedlist<Event>();
     }
@@ -35,22 +35,23 @@ public class Phonebook {
     
     
     
-    public void deleteEvent(String tit, String n){ //batool
+    public void deleteEvent(String tit, String n){ 
          
          System.out.println("deleting event" + tit + " with contact"+ n);
-         linkedlist <Contact> contactsWithCurrentEvent = getContactsInEvent(tit);
-         contactsWithCurrentEvent.findfirst();
+         //linkedlist <Contact> contactsWithCurrentEvent = getContactsInEvent(tit);
+         //contactsWithCurrentEvent.findfirst();
 
      }
          
-     public void DeleteAllEventsWithContact(String n, linkedlist<Event>L){ //batool
+     public void DeleteAllEventsWithContact(String n, linkedlist<Event>L){
          while(!L.isEmpty()){
              String currentEventTitle = L.retrieve().getTitle();
              deleteEvent(currentEventTitle,n);
              L.remove();
          }
      }
-     public void DeleteContact(String n){ //batool
+     
+    /* public static void DeleteContact(String n){
     
         if (AllContacts.empty()) {
             System.out.println("Can't delete because the contact is not found ");
@@ -71,7 +72,7 @@ public class Phonebook {
             AllContacts.removekey(n);
             System.out.println(n+" contact deleted");
             
-        }
+        }*/
 
     
     
@@ -81,7 +82,7 @@ public class Phonebook {
     
     
 
-    public Contact searchByName(String name) {//anoud
+    public static Contact searchByName(String name) {//anoud
 
         if (AllContacts.empty()) {
             return null;
@@ -118,7 +119,7 @@ public class Phonebook {
         AllContacts.preOrder();
     }
 
-    public void scheduleEvent(Event e, String name) {
+    public static void scheduleEvent(Event e, String name) {
         Contact c = searchByName(name);
         if (c == null) {
             System.out.println("Can't schedule, because this contact doesn't exist ");
@@ -151,7 +152,7 @@ public class Phonebook {
 
     }
 
-    public boolean isConflict(Event event, Contact contact) {//joury
+    public static boolean isConflict(Event event, Contact contact) {//joury
         linkedlist<Event> contactEvents = contact.contactEvents;
         if (contactEvents.isEmpty()) {
             return false;
@@ -209,6 +210,19 @@ public class Phonebook {
         }
 
     }
+    
+    
+    
+     public void AddContact(Contact c) {
+        boolean cFound = AllContacts.findkey(c.contactName);
+        if (cFound == true) {
+            System.out.println("Contact couldn't be added");
+        } else {
+            AllContacts.insert(c.contactName, c);
+            System.out.println("Contact added successfully!");
+        }
+    }
+     
 
     public static void AddEvent(Event e) {
         //Event eFound = searchEventByTitle(e.getTitle());//n
@@ -223,7 +237,7 @@ public class Phonebook {
         System.out.println("1. Add a contact");
         System.out.println("2. Search for a contact");
         System.out.println("3. Delete a contact");
-        System.out.println("4. Schedule an event");
+        System.out.println("4. Schedule an event/appointment");
         System.out.println("5. Print event details");
         System.out.println("6. Print contacts by first name");
         System.out.println("7. Print all events alphabetically");
@@ -256,8 +270,8 @@ public class Phonebook {
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Linked Tree Phonebook!");
-        PhoneBook p = new PhoneBook();
+        System.out.println("Welcome to the BST Phonebook!");
+        phonebook p = new phonebook();
 
         int choice;
 
@@ -285,7 +299,7 @@ public class Phonebook {
                     break;
 
                 case 2:
-                    int choice2 = searchCriteria2();
+                    /*int choice2 = searchCriteria2();
                     switch (choice2) {
                         case 1:
                             System.out.print("Enter the contact's name:");
@@ -368,7 +382,7 @@ public class Phonebook {
                             }
                             break;
 
-                    }
+                    }*/
 
                     break;
 
@@ -377,7 +391,7 @@ public class Phonebook {
                     String deleteName = input.nextLine();
                     deleteName = input.nextLine();
 
-                    DeleteContact(deleteName);//4batool
+                   // DeleteContact(deleteName); //4batool
 
                     break;
 
@@ -396,7 +410,7 @@ public class Phonebook {
 
                     Event eventt = new Event(title, date, time, location);
 
-                    schedulingEvent(eventt, name);//5
+                    scheduleEvent(eventt, name);//5
 
                     break;
 
@@ -424,7 +438,7 @@ public class Phonebook {
                     System.out.print("Enter the contact's first name:");
                     String firstname = input.next();
 
-                    linkedlist<Contact> contactList = searchByFirstName(firstname);
+                    linkedlist<Contact> contactList = AllContacts.SearchByFirstName(firstname);
 
                     if (contactList == null) {
                         break;
