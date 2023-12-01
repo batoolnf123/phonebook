@@ -44,6 +44,44 @@ public class Phonebook {
         }
         return false;
     }
+     public void deleteEvent(String tit, String n){ 
+         /*
+         System.out.println("deleting event" + tit + " with contact"+ n);
+         linkedlist <Contact> contactsWithCurrentEvent = getContactsInEvent(tit);
+         contactsWithCurrentEvent.findfirst();
+*/
+     }
+         
+     public void DeleteAllEventsWithContact(String n, linkedlist<Event>L){
+         while(!L.isEmpty()){
+             String currentEventTitle = L.retrieve().getTitle();
+             deleteEvent(currentEventTitle,n);
+             L.remove();
+         }
+     }
+     public void DeleteContact(String n){
+    
+        if (AllContacts.empty()) {
+            System.out.println("Can't delete because the contact is not found ");
+            return;
+        }
+
+        linkedlist <Event> L = new linkedlist<>();
+        boolean found=AllContacts.findkey(n);
+        
+            if (!found) {
+
+               
+                System.out.println(" Can't delete because the contact is not found");
+                return;
+            }
+            L=AllContacts.retrieve().getContactEvent();
+            DeleteAllEventsWithContact(n , L);
+            AllContacts.removekey(n);
+            System.out.println(n+" contact deleted");
+            
+        }
+
 
     public void PrintEventDetails(String ContactName) {//joury
         if (events.isEmpty()) {

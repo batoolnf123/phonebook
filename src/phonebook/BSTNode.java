@@ -11,6 +11,9 @@ public class BSTNode<T> {
     public T data;
     public BSTNode<T> left, right;
 
+    public BSTNode() { //batool
+    }
+
     public BSTNode(String k, T val) {//joury
         key = k;
         data = val;

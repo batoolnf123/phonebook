@@ -128,7 +128,7 @@ public class BST<T> {
     
    
     
-     public void inOrder() {
+     public void inOrder() { //batool
         if (root == null) {
             System.out.println("Empty tree");
         } else {
@@ -137,7 +137,7 @@ public class BST<T> {
 
     }
 
-    private void inOrder(BSTNode<Contact> p) {
+    private void inOrder(BSTNode<Contact> p) { //batool
         if (p == null) {
             return;
         }
@@ -147,15 +147,15 @@ public class BST<T> {
         inOrder(p.right);
     }
 
-    public void preOrder() {
+    public void preOrder() { //batool
         if (root == null) {
             System.out.println("Empty tree");
         } else {
-            preOrder((BSTNode<Contact>) root);
+            preOrder((BSTNode<Contact>)root);
         }
     }
 
-    private void preOrder() {
+    private void preOrder(BSTNode<Contact> p) { //batool
       
         if (p == null) {
             return;
@@ -167,7 +167,7 @@ public class BST<T> {
     }
     
 
-    public boolean checkPhoneExist(String phone) {
+    public boolean checkPhoneExist(String phone) { //batool
         if (root == null) {
             return false;
         } else {
@@ -175,12 +175,12 @@ public class BST<T> {
         }
     }
 
-    private boolean CheckPhoneInorder(BSTNode<Contact> p, String phone) {
+    private boolean CheckPhoneInorder(BSTNode<Contact> p, String phone) { //batool
         if (p == null) {
             return false;
         }
-        boolean ExistInLeft = CheckPhoneInorder(p.left, phone)
-        :
+        boolean ExistInLeft = CheckPhoneInorder(p.left, phone);
+        
       if (ExistInLeft) {
             return true;
         }
@@ -190,7 +190,7 @@ public class BST<T> {
         return CheckPhoneInorder(p.right, phone);
     }
 
-    public linkedlist<Contact> SearchByFirstName(String n) {
+    public linkedlist<Contact> SearchByFirstName(String n) { //batool
         linkedlist<Contact> res = new linkedlist<Contact>();
         
       if (root == null) {
@@ -200,12 +200,17 @@ public class BST<T> {
         return res;
     }
 
-    private void RecSearchByFirstName(BSTNode<T> p, linkedlist<Contact> res, String n) {
+    private void RecSearchByFirstName(BSTNode<T> p, linkedlist<Contact> res, String n) { //batool
         if (p == null) {
             return;
         }
         RecSearchByFirstName(p.left, res, n);
-        //String 
+        String currentName = p.key;
+        String FirstName= currentName.substring(0, currentName.indexOf(" ") );
+        if(FirstName.equals(n)){ //we can use comparto
+            res.insert((Contact)p.data);
+        }
+        RecSearchByFirstName(p.right,res,n);
     }
 
 }

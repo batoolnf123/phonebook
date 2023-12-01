@@ -8,6 +8,24 @@ package phonebook;
  *
  * @author batoolalfouzan
  */
-public class node {
-    
+
+public class node<T> 
+{
+
+    public T data;
+    public node<T> next;
+
+    public node(T d) 
+    {
+        this.data = d;
+        next = null;
+
+    }
+
+    public T getData() 
+    {
+        return data;
+    }
+
 }
+

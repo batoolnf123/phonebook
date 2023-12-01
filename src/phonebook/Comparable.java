@@ -8,6 +8,12 @@ package phonebook;
  *
  * @author batoolalfouzan
  */
-public interface Comparable {
-    
+
+
+interface Comparable<T> 
+{
+
+    public int CompareTo(T c);  
+
+    public void display(); 
 }
