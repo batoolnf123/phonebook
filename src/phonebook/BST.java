@@ -2,6 +2,7 @@ package phonebook;
 
 public class BST<T> {
 
+   
     BSTNode<T> root, current;
 
     /**
@@ -36,6 +37,7 @@ public class BST<T> {
 
         if (empty()) {
             current = root = newNode;
+            return true;
         }
 
         if (findkey(k)) {
@@ -73,7 +75,7 @@ public class BST<T> {
     }
        
 
-    public boolean remove(String key) {//joury
+    public boolean removekey(String key) {//joury
         BSTNode<T> pointer = root;
         BSTNode<T> q = null;
         String SearchKey = key;
@@ -191,31 +193,30 @@ public class BST<T> {
     }
 
     public linkedlist<Contact> SearchByFirstName(String n) { //batool
-        linkedlist<Contact> res = new linkedlist<Contact>();
+        linkedlist<Contact> list = new linkedlist<Contact>();
         
       if (root == null) {
-            return res;
+            return list;
         }
-        RecSearchByFirstName(root, res, n);
-        return res;
+        RecSearchByFirstName(root, list, n);
+        return list;
     }
 
-    private void RecSearchByFirstName(BSTNode<T> p, linkedlist<Contact> res, String n) { //batool
+    private void RecSearchByFirstName(BSTNode<T> p, linkedlist<Contact> list, String n) { //batool
         if (p == null) {
             return;
         }
-        RecSearchByFirstName(p.left, res, n);
+        RecSearchByFirstName(p.left, list, n);
         String currentName = p.key;
         String FirstName= currentName.substring(0, currentName.indexOf(" ") );
         if(FirstName.equals(n)){ //we can use comparto
-            res.insert((Contact)p.data);
+            list.insert((Contact)p.data);
         }
-        RecSearchByFirstName(p.right,res,n);
+        RecSearchByFirstName(p.right,list,n);
     }
-
-
-
-    public linkedlist<Contact> searchByEmail(String e) {//joury
+    
+    
+   public linkedlist<Contact> searchByEmail(String e) {//joury
         linkedlist<Contact> list = new linkedlist<Contact>();
         if (root == null) {
             return list;
@@ -225,6 +226,7 @@ public class BST<T> {
 
     }
 
+   
     private void psearchByEmail(BSTNode<T> p, linkedlist<Contact> list, String e) { //joury
         if (p == null) {
             return;
@@ -236,7 +238,7 @@ public class BST<T> {
         psearchByEmail(p.right, list, e);
     }
 
-    public linkedlist<Contact> searchByADdress(String e) {//joury
+    public linkedlist<Contact> searchByAdress(String e) {//joury
         linkedlist<Contact> list = new linkedlist<Contact>();
         if (root == null) {
             return list;
@@ -277,6 +279,7 @@ public class BST<T> {
         }
         psearchByBirthDay(p.right, list, e);
     }
+    
        public linkedlist<Contact> searchByPhoneNumber(String e) {//joury
         linkedlist<Contact> list = new linkedlist<Contact>();
         if (root == null) {
@@ -301,7 +304,5 @@ public class BST<T> {
 
 
 
-
-    
 
 }
