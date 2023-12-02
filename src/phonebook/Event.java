@@ -10,14 +10,16 @@ package phonebook;
  */
 public class Event implements Comparable<Event> {
 
-    private String title;
+       private String title;
     private String date;
     private String time;
     private String location;
+    
+    public boolean isEvent = true; //assume its event at first
 
-    linkedlist<Contact> contactsinEvent; 
+    public linkedlist<Contact> contactsinEvent; 
 
-    Contact involvedContact;
+
     String contactName;
 
     public Event() {
@@ -26,8 +28,9 @@ public class Event implements Comparable<Event> {
         this.time = "";
         this.location = "";
         this.contactName = "";
-        involvedContact = new Contact();
+        
         contactsinEvent = new linkedlist<Contact>();
+      
 
     }
 
@@ -36,19 +39,22 @@ public class Event implements Comparable<Event> {
         this.date = date;
         this.time = time;
         this.location = location;
-        involvedContact = new Contact();
+        
         contactsinEvent = new linkedlist<Contact>();
 
     }
+
+    public void setIsEvent(boolean isEvent) {
+        this.isEvent = isEvent;
+    }
+    
+    
 
     public void setContactName(String contactName) {
         this.contactName = contactName;
     }
 
-    public void setInvolvedContact(Contact involvedContact) {
-        this.involvedContact = involvedContact;
-    }
-
+   
     public String getDate() {
         return date;
     }
