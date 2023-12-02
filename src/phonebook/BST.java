@@ -213,4 +213,95 @@ public class BST<T> {
         RecSearchByFirstName(p.right,res,n);
     }
 
+
+
+    public linkedlist<Contact> searchByEmail(String e) {//joury
+        linkedlist<Contact> list = new linkedlist<Contact>();
+        if (root == null) {
+            return list;
+        }
+        psearchByEmail(root, list, e);
+        return list;
+
+    }
+
+    private void psearchByEmail(BSTNode<T> p, linkedlist<Contact> list, String e) { //joury
+        if (p == null) {
+            return;
+        }
+        psearchByEmail(p.left, list, e);
+        if (((Contact) p.data).getEmailAddress().equals(e)) {
+            list.insert((Contact) p.data);
+        }
+        psearchByEmail(p.right, list, e);
+    }
+
+    public linkedlist<Contact> searchByADdress(String e) {//joury
+        linkedlist<Contact> list = new linkedlist<Contact>();
+        if (root == null) {
+            return list;
+        }
+        psearchByAdress(root, list, e);
+        return list;
+
+    }
+
+    private void psearchByAdress(BSTNode<T> p, linkedlist<Contact> list, String e) { //joury
+        if (p == null) {
+            return;
+        }
+        psearchByAdress(p.left, list, e);
+        if (((Contact) p.data).getAddress().equals(e)) {
+            list.insert((Contact) p.data);
+        }
+        psearchByAdress(p.right, list, e);
+    }
+
+    public linkedlist<Contact> searchByBirthDay(String e) {//joury
+        linkedlist<Contact> list = new linkedlist<Contact>();
+        if (root == null) {
+            return list;
+        }
+        psearchByBirthDay(root, list, e);
+        return list;
+
+    }
+
+    private void psearchByBirthDay(BSTNode<T> p, linkedlist<Contact> list, String e) { //joury
+        if (p == null) {
+            return;
+        }
+        psearchByBirthDay(p.left, list, e);
+        if (((Contact) p.data).getBirthday().equals(e)) {
+            list.insert((Contact) p.data);
+        }
+        psearchByBirthDay(p.right, list, e);
+    }
+       public linkedlist<Contact> searchByPhoneNumber(String e) {//joury
+        linkedlist<Contact> list = new linkedlist<Contact>();
+        if (root == null) {
+            return list;
+        }
+        psearchByPhoneNumber(root, list, e);
+        return list;
+
+    }
+
+    private void psearchByPhoneNumber(BSTNode<T> p, linkedlist<Contact> list, String e) { //joury
+        if (p == null) {
+            return;
+        }
+        psearchByPhoneNumber(p.left, list, e);
+        if (((Contact) p.data).getPhoneNumber().equals(e)) {
+            list.insert((Contact) p.data);
+        }
+        psearchByPhoneNumber(p.right, list, e);
+    }
+
+
+
+
+
+    
+
 }
