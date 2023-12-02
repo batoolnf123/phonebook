@@ -160,14 +160,24 @@ public class Phonebook {
         AllContacts.preOrder();
     }
 
-    public static void scheduleEvent(Event event1, String name) { //anoud
+       public static void scheduleEvent(Event event1, String name) { //anoud
 
         Contact c1 = searchByName(name);
         boolean hasConflict = false;
+      
 
         if (c1 == null) {
             System.out.println("Can't schedule event, because this contact doesn't exist ");
             return;
+        }
+        
+        
+        
+        if(!event1.isEvent){
+        if(event1.contactsinEvent.isEmpty())
+                System.out.println("appointment already scheduled");
+        return;
+        
         }
 
         if (!c1.contactEvents.isEmpty()) {
@@ -202,7 +212,6 @@ public class Phonebook {
         }
 
     }
-
     public static void searchEventByContact(String n) { //joury
         boolean found = false;
         if (events.isEmpty()) {
