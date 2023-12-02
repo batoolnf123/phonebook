@@ -6,6 +6,7 @@ public class linkedlist<T> {
     private node<T> head;
     private node<T> current;
 
+    
     public linkedlist() {
         
 head = current = null;
