@@ -13,7 +13,7 @@ public class Contact implements Comparable<Contact> {
 
     public linkedlist<Event> contactEvents;
 
-    public Contact() {//joury
+    public Contact() {
         this.contactName = "";
         this.phoneNumber = "";
         this.emailAddress = "";
@@ -23,7 +23,7 @@ public class Contact implements Comparable<Contact> {
         contactEvents = new linkedlist<Event>();
     }
 
-    public Contact(String contactName, String phoneNumber, String emailAddress, String address, String birthday, String notes) //joury
+    public Contact(String contactName, String phoneNumber, String emailAddress, String address, String birthday, String notes) 
     {
         this.contactName = contactName;
         this.phoneNumber = phoneNumber;
@@ -113,9 +113,4 @@ public class Contact implements Comparable<Contact> {
             return -1;
         }
     }
-        @Override
-    public String toString() {//joury
-        return "Contact name:  "+ contactName  +" /n Phone number:"+ phoneNumber + "/n emailAddress:" + emailAddress + "/n address:" + address + "/n birthday:" + birthday + "/n notes:" + notes + "/n contactEvents:" + contactEvents ;
-    }
-    
 }
