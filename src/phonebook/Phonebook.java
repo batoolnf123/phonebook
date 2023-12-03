@@ -479,11 +479,11 @@ public class Phonebook {
                             location = input.nextLine();
 
                             String[] names = name.split(",");
-                            Event eventt = new Event(title, date, time, location);
+                            Event eventt ; 
                             
 
                             for (int i = 0; i < names.length; i++) {
-                                
+                                eventt = new Event(title, date, time, location);
                                 String contname = names[i].trim();
                                 scheduleEvent(eventt, contname);
 
