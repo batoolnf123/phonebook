@@ -282,24 +282,7 @@ public class Phonebook {
             System.out.println("Contact added successfully!");
         }
     }
-   public void PrintEventDetails(String ContactName) {//joury
-        if (events.isEmpty()) {
-            System.out.println("There are no events with this contact name");
-            return;
-
-        }
-        events.findfirst();
-        while (!events.last()) {
-            if (events.retrieve().getContactName().equals(ContactName)) {
-                events.retrieve().display();
-            }
-            events.findnext();
-        }
-        if (events.retrieve().getContactName().equals(ContactName)) {
-            events.retrieve().display();
-        }
-        System.out.println("There are no events with this contact name");
-    }
+   
 
 
     public static void AddEvent(Event e) { //anoud
