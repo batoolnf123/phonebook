@@ -13,7 +13,7 @@ public class BST<T> {
         root = current = null;
     }
 
-    public boolean empty() {//joury
+    public boolean empty() {
         return root == null;
     }
 
