@@ -3,7 +3,7 @@ package phonebook;
 public class BST<T> {
 
 
-   //auto
+   
     BSTNode<T> root, current;
 
     /**
